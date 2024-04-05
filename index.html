@@ -95,9 +95,20 @@
         e.preventDefault();
         if (socket.connected) {
           toggleButton.innerText = "Connect";
+          // afficher une message "disconnect" sur la page html
+          const item = document.createElement("li");
+          item.style.backgroundColor = "pink";
+          item.textContent = "*Vous êtes déconnecté*";
+          messages.appendChild(item);
           socket.disconnect();
         } else {
           toggleButton.innerText = "Disconnect";
+          // afficher une message "connect" sur la page html
+          const item = document.createElement("li");
+          // ajouter un style background rouge pour le message
+          item.style.backgroundColor = "lightgreen";
+          item.textContent = "*Vous êtes connecté*";
+          messages.appendChild(item);
           socket.connect();
         }
       });
